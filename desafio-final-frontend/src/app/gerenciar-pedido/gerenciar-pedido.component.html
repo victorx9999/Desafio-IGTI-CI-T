@@ -1,0 +1,22 @@
+<div class="header">
+    <mat-toolbar color="primary">
+        <mat-toolbar-row>
+            <span>Gerenciar Pedido</span>
+        </mat-toolbar-row>
+    </mat-toolbar>
+</div>
+
+
+<mat-action-list>
+    <ng-container *ngFor="let pedido of pedidos; let i = index">
+        <a mat-list-item [routerLink]="['/pedidos', pedido.id]">
+            <span class="flex-1">Pedido {{ i+1 }}</span>
+            <span class="fs-small">{{ pedido.situacao}}</span>
+        </a>
+    </ng-container>
+</mat-action-list>
+
+<mat-toolbar>
+    <a routerLink="/cardapio" mat-raised-button>Voltar para cardapio</a>
+    <span class="ml"></span>
+</mat-toolbar>

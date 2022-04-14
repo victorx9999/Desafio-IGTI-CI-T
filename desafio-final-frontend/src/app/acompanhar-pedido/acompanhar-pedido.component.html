@@ -1,0 +1,40 @@
+<div class="header">
+    <mat-toolbar color="primary">
+        <span>Gerenciar Pedido</span>
+    </mat-toolbar>
+</div>
+
+<div class="body">
+    <mat-card>
+        <span><strong>Número do Pedido:</strong> {{this.id}}</span>
+    </mat-card>
+    <mat-card>
+        <span><strong>Data e Hora:</strong> {{this.dataHora | date:'medium' }}</span>
+    </mat-card>
+
+    <mat-card>
+        <span><strong>Situação:</strong> 
+            <select [(ngModel)]="selected">
+                <option *ngFor="let item of situacao"  [value]="item.situacao">{{item.situacao}}</option>
+            </select></span>
+    </mat-card>
+
+</div>
+<mat-list>
+    <ng-container *ngFor="let item of pedidos.itens">
+        <mat-list-item>
+            <span class="flex-1">{{item.produto.descricao}}</span>
+            <span>{{ item.quantidade }} &times;
+                {{ item.produto.preco | number: "0.2-2" }}</span>
+        </mat-list-item>
+    </ng-container>
+</mat-list>
+
+<mat-toolbar>
+    <a routerLink="/gerenciar_pedido" mat-raised-button>Voltar para lista</a>
+    <span class="ml"></span>
+    <span class="flex-1"></span>
+    <button mat-raised-button color="accent" (click)="atualizarPedido()">
+        Salvar
+    </button>
+</mat-toolbar>
